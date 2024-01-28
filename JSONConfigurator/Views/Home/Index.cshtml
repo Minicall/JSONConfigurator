@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Configuration Index";
+}
+
+<h1>Configuration Index</h1>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Configuration" asp-action="UploadConfiguration">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+</form>
+
+<div id="jstree"></div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jstree@3.3.12/dist/themes/default/style.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jstree@3.3.12/dist/jstree.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#jstree').jstree({
+                'core': {
+                    'data': {
+                        'url': '/Configuration/Index',
+                        'dataType': 'json'
+                    }
+                }
+            });
+        });
+    </script>
+}

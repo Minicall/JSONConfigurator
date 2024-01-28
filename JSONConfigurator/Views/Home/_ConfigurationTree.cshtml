@@ -1,0 +1,14 @@
+﻿@model Configuration
+
+<ul>
+    @if (Model.Children.Any())
+    {
+        @foreach (var child in Model.Children)
+        {
+            <li>
+                @child.Name
+                @await Html.PartialAsync("_ConfigurationTree", child)
+            </li>
+        }
+    }
+</ul>
